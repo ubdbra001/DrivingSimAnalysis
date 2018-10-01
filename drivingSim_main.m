@@ -2,7 +2,7 @@
 % Finding location, changing current dir to location and adding function
 % file to path
 path = mfilename('fullpath');
-cd(path)
+cd(fileparts(path))
 addpath('functions')
 
 % Import constant variables from file
@@ -55,7 +55,7 @@ for file_n = 1:length(files)
     % Add indcator line to plot?
     
     % Save crossing point row number to output variable
-    DS_output(file_n,:) = {participantID, ix};
+    DS_output(file_n,:) = {participantID, ix + 1};
     
 end
 
