@@ -27,7 +27,8 @@ for file_n = 1:length(files)
     fileName = files(file_n).name;
     
     % Extract participant ID from filename?
-    participantID = strsplit(fileName, '_');
+    participantID = strsplit(fileName, {'_', '.'});
+    participantID = participantID{1};
     
     % Import data
     fullData = importDriveCSV(fullfile('data', fileName));

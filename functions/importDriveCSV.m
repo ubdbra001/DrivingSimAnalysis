@@ -17,7 +17,7 @@ function DriveData1 = importDriveCSV(filename, startRow, endRow)
 delimiter = ',';
 if nargin<=2
     startRow = 2;
-    endRow = 10000;
+    endRow = 50000;
 end
 
 %% Format for each line of text:
