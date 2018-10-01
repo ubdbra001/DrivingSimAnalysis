@@ -1,3 +1,4 @@
+clear;close;clc
 
 % Finding location, changing current dir to location and adding function
 % file to path
