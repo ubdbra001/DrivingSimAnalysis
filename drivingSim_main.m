@@ -51,6 +51,8 @@ for file_n = 1:length(files)
             case DS_constants.nodriveCON
                 lineCol = 'c';
         end
+    else
+        lineCol = 'm';
     end
     
     fprintf('\nLoading %s. Please wait...\n\n', fileName)
@@ -107,12 +109,14 @@ for file_n = 1:length(files)
     fprintf('\nData extracted and saved\n\n')
     
     % Save crossing point row number to output variable
-    DS_output(file_n,:) = {participantID, ix + 1, fullData.Elapsedt imesec(ix), fullData.Distancetravelledfeet(ix)};
+    DS_output(file_n,:) = {participantID, ix + 1, fullData.Elapsedtimesec(ix), fullData.Distancetravelledfeet(ix)};
     
 end
 
 if DS_constants.drawPlots
     hold off
+    xlabel('Time (seconds)')
+    ylabel('Distance travelled (feet)')
     % Save plot?
 end
 

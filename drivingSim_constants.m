@@ -18,10 +18,15 @@ classdef drivingSim_constants < handle
         sampleRate = 30;
         
         % Set to true for data plots, false to switch plots off
-        drawPlots = false;
+        drawPlots = true;
         
+        % For the range variables below use [] to indicate when they are
+        % not in use
+        
+        % Time range (in seconds) to extract data from around the crossing point
         timeRange = 1
         
+        % distance range (in feet) to extract data from around the crossing point
         distanceRange = []
         
         % Variable for setting filename
