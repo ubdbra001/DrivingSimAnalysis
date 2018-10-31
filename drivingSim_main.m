@@ -41,7 +41,7 @@ for file_n = 1:length(files)
     if ~isnan(str2double(participantID))
         %participantID = str2num(participantID);
         % If it is the decide the group and line color based on the participant ID
-        switch participantID
+        switch participantID(1)
             case DS_constants.driveDCD
                 lineCol = 'r';
             case DS_constants.nodriveDCD
