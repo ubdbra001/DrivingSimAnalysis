@@ -24,6 +24,9 @@ end
 if DS_constants.drawPlots
     fig = axes();
     hold on
+    if ~DS_constants.plotGroups
+        lineCols = jet(length(files));
+    end
 end
     
 for file_n = 1:length(files)
@@ -38,7 +41,7 @@ for file_n = 1:length(files)
     participantID = participantID{1};    
     
     % Check to see if participant ID is a number
-    if ~isnan(str2double(participantID))
+    if ~isnan(str2double(participantID)) && DS_constants.plotGroups
         %participantID = str2num(participantID);
         % If it is the decide the group and line color based on the participant ID
         switch participantID(1)
@@ -51,6 +54,8 @@ for file_n = 1:length(files)
             case DS_constants.nodriveCON
                 lineCol = 'c';
         end
+    elseif ~DS_constants.plotGroups
+        lineCol = lineCols(file_n,:);
     else
         lineCol = 'm';
     end
@@ -74,7 +79,8 @@ for file_n = 1:length(files)
     
     if DS_constants.drawPlots
         % Plot data distance (y-axis) vs time (x-axis) for each participant
-        plot(fig, extractedData.Elapsedtimesec, extractedData.Distancetravelledfeet, lineCol, extractedData.Elapsedtimesec, dummyDistance, 'k');
+        plot(fig, extractedData.Elapsedtimesec, extractedData.Distancetravelledfeet, 'Color', lineCol, 'DisplayName', participantID);
+        plot(fig, extractedData.Elapsedtimesec, dummyDistance, 'k', 'HandleVisibility', 'off');
     end
     
     % Locate and extract crossing point for each participant
@@ -117,6 +123,9 @@ if DS_constants.drawPlots
     hold off
     xlabel('Time (seconds)')
     ylabel('Distance travelled (feet)')
+    if ~DS_constants.plotGroups
+        legend(fig, 'show', 'Location', 'eastoutside');
+    end
     % Save plot?
 end
 

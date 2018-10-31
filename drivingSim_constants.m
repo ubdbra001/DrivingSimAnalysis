@@ -17,8 +17,14 @@ classdef drivingSim_constants < handle
         % Sample rate of he simulation (May not be needed)
         sampleRate = 30;
         
+        
         % Set to true for data plots, false to switch plots off
         drawPlots = true;
+        
+        % set to true if you want to set line colour by group, set false if
+        % you want to have individual line colours 
+        plotGroups = true;
+        
         
         % For the range variables below use [] to indicate when they are
         % not in use
@@ -32,7 +38,7 @@ classdef drivingSim_constants < handle
         % Variable for setting filename
         outputFilename = 'DS_output.csv';
         outputDir = 'extractedData';
-
+        
         % Leading number for the different condtion types
         driveDCD = '0'
         nodriveDCD = '1'
